@@ -6,6 +6,7 @@ import MovieComponent from "./components/MovieComponent";
 import Pagination from "./components/PaginationComponent";
 import { firstdata } from "./components/firstdata";
 import spinner from "./img/Spinner.svg";
+
 function App() {
   const [movieSearch, setMovieSearch] = useState("");
   const [movies, setMovies] = useState(firstdata);
@@ -18,7 +19,7 @@ function App() {
     "https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg";
   let url;
   url =
-    "https://api.themoviedb.org/3/search/tv?api_key=fef55a6754f2f6d00a0038388915039c&include_adult=false&query=" +
+    "https://api.themoviedb.org/3/search/tv?api_key=fef55a6754f2f6d00a0038388915039c&query=" +
     movieSearch +
     "&page=" +
     currentPage;

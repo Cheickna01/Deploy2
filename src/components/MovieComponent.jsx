@@ -1,4 +1,5 @@
 import erreur from "../img/5203299.jpg";
+import {NavLink} from "react-router-dom"
 
 export default function MovieComponent({movies}) {
   return (
@@ -38,7 +39,9 @@ export default function MovieComponent({movies}) {
                         </li>
                         <li className="ms-4 text-center">
                           {" "}
+                          <NavLink to="/info">
                           <i className="fas fa-info-circle"></i>{" "}
+                          </NavLink>
                         </li>
                       </ul>
                     </div>
