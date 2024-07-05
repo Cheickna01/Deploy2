@@ -1,4 +1,4 @@
-import BeforeHeader from "./BeforeNav";
+import { Link, NavLink } from "react-router-dom";
 export default function NavComponent({
   logo,
   movieSearch,
@@ -8,10 +8,11 @@ export default function NavComponent({
 }) {
   return (
     <>
-      <BeforeHeader />
       <div className="nav mt-4">
         <div className="logo">
-          <img src={logo} alt="logo" className="logo" />
+          <NavLink to={"/"}>
+            <img src={logo} alt="logo" className="logo" />
+          </NavLink>
         </div>
         <div className="search-movie">
           <form>
@@ -24,21 +25,22 @@ export default function NavComponent({
               }}
             />
             <button onClick={handleSubmit} type="submit" className="b">
-            <i className="fas fa-search"></i>
+              <i className="fas fa-search"></i>
             </button>
           </form>
         </div>
 
         <div className="mylast">
-            <button className="">
-            Mes films<i className="fas fa-shopping-cart fa-lg"></i>
-            </button>
-            <button className="">
+          <button className="">
+            <NavLink to={"/panier"} className="text-black text-decoration-none">
+              Mes films<i className="fas fa-shopping-cart fa-lg"></i>
+            </NavLink>
+          </button>
+          <button className="">
             Login<i className="fas fa-shopping-cart fa-lg"></i>
-            </button>
+          </button>
         </div>
       </div>
-
     </>
   );
 }

@@ -1,16 +1,18 @@
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
 import erreur from "../img/5203299.jpg";
-import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { a } from "../redux/Cart";
-
-export default function MovieComponent({ movies }) {
-  const dispatch = useDispatch()
+import { NavLink } from "react-router-dom";
+export default function Panier() {
+  const dispatch = useDispatch();
+  const films = useSelector((state) => state.Cart.cart);
   return (
-    <>
-      {movies.length >= 1 ? (
+    <div className="app mt-5">
+        <h1 className="text-center">Mes favoris</h1>
+      {films.length >= 1 ? (
         <div className="movies container">
           <div className="row d-flex justify-content-center">
-            {movies.map((movie) => (
+            {films.map((movie) => (
               <div className="movie col-md-4 col-lg-3 col-12" key={movie.id}>
                 <div className="movie-grid mb-4">
                   <div className="movie-img">
@@ -36,9 +38,12 @@ export default function MovieComponent({ movies }) {
                       </div>
 
                       <ul className="action-movie list-unstyled">
-                        <li className="text-center" onClick={()=>dispatch(a.AddOne(movie))}>
+                        <li
+                          className="text-center"
+                          onClick={() => dispatch(a.RemoveOne(movie))}
+                        >
                           {" "}
-                          <i className="fas fa-heart"></i>{" "}
+                          <i class="fas fa-trash"></i>{" "}
                         </li>
                         <li className="ms-4 text-center">
                           {" "}
@@ -55,8 +60,8 @@ export default function MovieComponent({ movies }) {
           </div>
         </div>
       ) : (
-        <h1 className="text-center mt-4">Une erreur est survenue...</h1>
+        <h1 className="text-center mt-4">Aucun favoris</h1>
       )}
-    </>
+    </div>
   );
 }
