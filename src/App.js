@@ -1,5 +1,4 @@
 import "./App.css";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { useState, useEffect } from "react";
 import NavComponent from "./components/NavComponent";
 import MovieComponent from "./components/MovieComponent";
@@ -14,14 +13,15 @@ function App({
   handlePageChange,
   nextPage,
   previewPage,
-  firstdata
+  firstdata,
 }) {
+  const films = movies.map((m) => <MovieComponent movie={m} />);
   return (
     <>
-      <div className="app mt-5">
+      <div className="app movies container mt-5">
         <h1 className="text-center">Nos films et series</h1>
         {!formSubmit ? (
-          <MovieComponent movies={movies} />
+          <div className="row d-flex justify-content-center">{films}</div>
         ) : (
           <div className="spinner">
             <img src={spinner} alt="spinner" className="text-center" />
